@@ -23,7 +23,6 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        {/* Header с абсолютным позиционированием */}
         <header className="fixed top-0 left-0 w-full z-50 bg-transparent">
           <div className="container mx-auto px-4 py-3">
             <nav className="flex items-center justify-between">
@@ -34,7 +33,6 @@ export default function App() {
                 </Link>
               </div>
 
-              {/* Десктопное меню */}
               <div className="hidden md:flex flex-1 mx-8">
                 <div className="flex items-center justify-center space-x-4 lg:space-x-8">
                   <Link to="/Account" className="text-white hover:text-gray-300 transition-colors text-sm font-medium drop-shadow-lg">
@@ -52,7 +50,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Десктопная правая часть */}
               <div className="hidden md:flex items-center space-x-4">
                 <div className="relative">
                   <input
@@ -78,7 +75,6 @@ export default function App() {
                 </button>
               </div>
 
-              {/* Бургер-меню для мобильных */}
               <button onClick={toggleMenu} className="md:hidden flex flex-col justify-center items-center w-10 h-10 z-60" aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}>
                 <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${isMenuOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"}`} />
                 <span className={`block h-0.5 w-6 bg-white my-1 transition-all duration-300 ${isMenuOpen ? "opacity-0" : "opacity-100"}`} />
@@ -87,7 +83,6 @@ export default function App() {
             </nav>
           </div>
 
-          {/* Мобильное меню */}
           <div
             className={`
             md:hidden fixed top-0 left-0 w-full h-screen bg-black/95 backdrop-blur-md z-50
@@ -113,7 +108,6 @@ export default function App() {
                 О нас
               </Link>
 
-              {/* Поиск в мобильном меню */}
               <div className="w-full max-w-xs pt-4">
                 <div className="relative">
                   <input
@@ -127,7 +121,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Кнопки авторизации в мобильном меню */}
               <div className="flex flex-col items-center space-y-4 pt-8 border-t border-white/20 w-full max-w-xs">
                 <Link to="/Error" onClick={closeMenu} className="text-white text-xl hover:text-blue-400 transition-colors py-2">
                   Авторизация
@@ -137,7 +130,6 @@ export default function App() {
                 </Link>
               </div>
 
-              {/* Переключатель темы в мобильном меню */}
               <div className="pt-4">
                 <button className="p-3 hover:bg-white/10 rounded-md transition-colors backdrop-blur-sm">
                   <img src={ThemeSelectorBlack} alt="Переключить тему" className="h-8 w-8 drop-shadow-lg" />
@@ -147,7 +139,6 @@ export default function App() {
           </div>
         </header>
 
-        {/* Основной контент БЕЗ отступа сверху */}
         <div className="relative">
           <Routes>
             <Route path="/" element={<Index />} />
