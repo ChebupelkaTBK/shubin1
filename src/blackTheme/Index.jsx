@@ -3,9 +3,34 @@ import IndexBg from "../images/indexBg.jpg";
 
 export default function Index() {
   return (
-    <div className="bg-no-repeat">
-      <div>
-        <img src={IndexBg} alt="" className="releative w-full h-dvh" />
+    <div className="relative min-h-screen text-white">
+      <img src={IndexBg} alt="" className="absolute w-full h-full object-cover z-0" />
+      <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="flex flex-col items-center pt-8">
+          <div className="w-full max-w-4xl">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl pt-8 md:pt-10 lg:pt-12 text-center md:text-left">Конкурс технологий будущего. Твой проект может изменить всё.</h1>
+            <div className="pt-4 md:pt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-center md:text-left">
+              <p className="mb-2 sm:mb-3">Ты экспериментируешь с нейросетями, создаешь умные устройства или</p>
+              <p className="mb-2 sm:mb-3">разрабатываешь блокчейн-решения? Покажи свою работу миру! Это шанс заявить о</p>
+              <p>себе, получить поддержку экспертов и выиграть ресурсы для развития.</p>
+            </div>
+            <div>
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pt-6 md:pt-8 lg:pt-10 text-center md:text-left">Главное о конкурсе:</h1>
+              <ul className="flex flex-col gap-2 sm:gap-3 list-disc marker:text-white pl-4 sm:pl-6 md:pl-10 pt-2 sm:pt-3 text-sm sm:text-base md:text-lg lg:text-2xl">
+                <li>Для кого: Разработчики, дизайнеры, инженеры, студенты и технологические энтузиасты</li>
+                <li>Номинации: Лучший ИИ-проект / Инновация на блокчейне / Умное устройство / Социально значимый tech-проект</li>
+                <li>Призы: Гранты, менторская поддержка, пиар на крупных площадках, оборудование</li>
+              </ul>
+            </div>
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pt-4 md:pt-6 lg:pt-8 text-center md:text-left">Почему стоит участвовать:</h1>
+            <div className="flex flex-col gap-1 sm:gap-2 pt-3 sm:pt-4 text-sm sm:text-base md:text-lg lg:text-2xl text-center md:text-left">
+              <p>Экспертная оценка: Ваш проект увидят лидеры индустрии</p>
+              <p>Нетворкинг: Знакомство с инвесторами и единомышленниками</p>
+              <p>Реальные перспективы: Лучшие проекты получат поддержку для реализацииПортфолио:</p>
+              <p>Портфолио: Сертификат или диплом для вашей карьеры</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
