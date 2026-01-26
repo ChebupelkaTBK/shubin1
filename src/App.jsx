@@ -7,10 +7,12 @@ import Error from "./blackTheme/404.jsx";
 import Shedule from "./blackTheme/Shedule.jsx";
 import CortexImage from "./images/Frame 1.png";
 import CortexText from "./images/Cortex.png";
-import ThemeSelectorBlack from "./images/ThemeSelectorblack.png";
+import ThemeSelectorBlack from "./images/themeSelectorblack.png";
+import ThemeSelectorWhite from "./images/themeSelectorwhite.png"; // Добавьте светлую иконку
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState("dark"); // Состояние для темы
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,10 +22,15 @@ export default function App() {
     setIsMenuOpen(false);
   };
 
+  // Функция переключения темы
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+  };
+
   return (
     <>
       <BrowserRouter>
-        <header className="fixed top-0 left-0 w-full z-50 bg-transparent">
+        <header className="bg-black sm:bg-transparent fixed top-0 left-0 w-full z-50">
           <div className="container mx-auto px-4 py-3">
             <nav className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -70,8 +77,9 @@ export default function App() {
                     Регистрация
                   </Link>
                 </div>
-                <button className="p-2 hover:bg-white/10 rounded-md transition-colors backdrop-blur-sm">
-                  <img src={ThemeSelectorBlack} alt="Переключить тему" className="h-6 w-6 drop-shadow-lg" />
+                {/* Кнопка переключения темы */}
+                <button onClick={toggleTheme} className="p-2 hover:bg-white/10 rounded-md transition-colors backdrop-blur-sm" title="Переключить тему">
+                  <img src={theme === "dark" ? ThemeSelectorBlack : ThemeSelectorWhite} alt="Переключить тему" className="h-6 w-6 drop-shadow-lg" />
                 </button>
               </div>
 
@@ -130,9 +138,17 @@ export default function App() {
                 </Link>
               </div>
 
+              {/* Кнопка переключения темы в мобильном меню */}
               <div className="pt-4">
-                <button className="p-3 hover:bg-white/10 rounded-md transition-colors backdrop-blur-sm">
-                  <img src={ThemeSelectorBlack} alt="Переключить тему" className="h-8 w-8 drop-shadow-lg" />
+                <button
+                  onClick={() => {
+                    toggleTheme();
+                    closeMenu();
+                  }}
+                  className="p-3 hover:bg-white/10 rounded-md transition-colors backdrop-blur-sm"
+                  title="Переключить тему"
+                >
+                  <img src={theme === "dark" ? ThemeSelectorBlack : ThemeSelectorWhite} alt="Переключить тему" className="h-8 w-8 drop-shadow-lg" />
                 </button>
               </div>
             </div>
@@ -141,8 +157,8 @@ export default function App() {
 
         <div className="relative">
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/Index" element={<Index />} />
+            <Route path="/" element={<Index theme={theme} />} />
+            <Route path="/Index" element={<Index theme={theme} />} />
             <Route path="/Account" element={<Account />} />
             <Route path="/Error" element={<Error />} />
             <Route path="/Registration" element={<Registration />} />
