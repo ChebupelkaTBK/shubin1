@@ -1,23 +1,19 @@
 import React from "react";
 import IndexBg from "../images/indexBg.jpg";
-import IndexBgLight from "../images/indexBg-Light.jpg"; // Добавьте светлое изображение фона
+import IndexBgLight from "../images/indexBg-Light.jpg";
 import { Link, Route, Routes } from "react-router-dom";
 import Error from "./404.jsx";
 
 export default function Index({ theme }) {
-  // Выбор фона в зависимости от темы
   const backgroundImage = theme === "dark" ? IndexBg : IndexBgLight;
 
   return (
     <>
       <div className={`relative min-h-screen transition-all duration-500 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-        {/* Фоновое изображение */}
         <img src={backgroundImage} alt="Фон" className="absolute w-full h-full object-cover z-0 transition-opacity duration-500" />
 
-        {/* Затемнение для темной темы */}
         {theme === "dark" && <div className="absolute w-full h-full bg-black/50 z-1"></div>}
 
-        {/* Осветление для светлой темы */}
         {theme === "light" && <div className="absolute w-full h-full bg-white/30 z-1"></div>}
 
         <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12">
@@ -55,7 +51,6 @@ export default function Index({ theme }) {
         <Link to="/Error">e-mail: family@cosmos.ru</Link>
       </footer>
       <Routes>
-        <Route path="/Error" element={<Error />} />
         <Route path="/Error" element={<Error />} />
       </Routes>
     </>

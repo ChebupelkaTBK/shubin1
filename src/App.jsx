@@ -8,7 +8,7 @@ import Shedule from "./blackTheme/Shedule.jsx";
 import CortexImage from "./images/Frame 1.png";
 import CortexText from "./images/Cortex.png";
 import ThemeSelectorBlack from "./images/themeSelectorblack.png";
-import ThemeSelectorWhite from "./images/themeSelectorwhite.png"; // Добавьте светлую иконку
+import ThemeSelectorWhite from "./images/themeSelectorwhite.png";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
