@@ -10,9 +10,35 @@ import CortexText from "./images/Cortex.png";
 import ThemeSelectorBlack from "./images/themeSelectorblack.png";
 import ThemeSelectorWhite from "./images/themeSelectorwhite.png";
 
+const handleScrollToAuth = (e) => {
+  e.preventDefault();
+
+  if (window.location.pathname === "/" || window.location.pathname === "/Index") {
+    const authSection = document.getElementById("autorize");
+    if (authSection) {
+      authSection.scrollIntoView({ behavior: "smooth" });
+    }
+  } else {
+    window.location.href = "/Index#autorize";
+  }
+};
+
+const handleScrollToContacts = (e) => {
+  e.preventDefault();
+
+  if (window.location.pathname === "/" || window.location.pathname === "/Index") {
+    const contactsSection = document.getElementById("contacts");
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  } else {
+    window.location.href = "/Index#contacts";
+  }
+};
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState("dark"); // Состояние для темы
+  const [theme, setTheme] = useState("dark");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -22,7 +48,6 @@ export default function App() {
     setIsMenuOpen(false);
   };
 
-  // Функция переключения темы
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
@@ -45,9 +70,11 @@ export default function App() {
                   <Link to="/Account" className="text-white hover:text-gray-300 transition-colors text-sm font-medium drop-shadow-lg">
                     Личный кабинет
                   </Link>
-                  <Link to="/Error" className="text-white hover:text-gray-300 transition-colors text-sm font-medium drop-shadow-lg">
+
+                  <button onClick={handleScrollToContacts} className="text-white hover:text-gray-300 transition-colors text-sm font-medium drop-shadow-lg bg-transparent border-none cursor-pointer">
                     Контакты
-                  </Link>
+                  </button>
+
                   <Link to="/Shedule" className="text-white hover:text-gray-300 transition-colors text-sm font-medium drop-shadow-lg">
                     Конкурсы
                   </Link>
@@ -70,14 +97,15 @@ export default function App() {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <Link to="/Error" className="text-white hover:text-gray-300 transition-colors text-sm font-medium drop-shadow-lg">
+                  <button onClick={handleScrollToAuth} className="text-white hover:text-gray-300 transition-colors text-sm font-medium drop-shadow-lg bg-transparent border-none cursor-pointer">
                     Авторизация
-                  </Link>
+                  </button>
+
                   <Link to="/Registration" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors drop-shadow-lg backdrop-blur-sm">
                     Регистрация
                   </Link>
                 </div>
-                {/* Кнопка переключения темы */}
+
                 <button onClick={toggleTheme} className="p-2 hover:bg-white/10 rounded-md transition-colors backdrop-blur-sm" title="Переключить тему">
                   <img src={theme === "dark" ? ThemeSelectorBlack : ThemeSelectorWhite} alt="Переключить тему" className="h-6 w-6 drop-shadow-lg" />
                 </button>
@@ -106,9 +134,18 @@ export default function App() {
               <Link to="/Account" onClick={closeMenu} className="text-white text-2xl hover:text-blue-400 transition-colors py-2">
                 Личный кабинет
               </Link>
-              <Link to="/Error" onClick={closeMenu} className="text-white text-2xl hover:text-blue-400 transition-colors py-2">
+
+              {/* Кнопка контактов в мобильном меню */}
+              <button
+                onClick={(e) => {
+                  handleScrollToContacts(e);
+                  closeMenu();
+                }}
+                className="text-white text-2xl hover:text-blue-400 transition-colors py-2 bg-transparent border-none cursor-pointer"
+              >
                 Контакты
-              </Link>
+              </button>
+
               <Link to="/Shedule" onClick={closeMenu} className="text-white text-2xl hover:text-blue-400 transition-colors py-2">
                 Конкурсы
               </Link>
@@ -130,15 +167,21 @@ export default function App() {
               </div>
 
               <div className="flex flex-col items-center space-y-4 pt-8 border-t border-white/20 w-full max-w-xs">
-                <Link to="/Error" onClick={closeMenu} className="text-white text-xl hover:text-blue-400 transition-colors py-2">
+                <button
+                  onClick={(e) => {
+                    handleScrollToAuth(e);
+                    closeMenu();
+                  }}
+                  className="text-white text-xl hover:text-blue-400 transition-colors py-2 bg-transparent border-none cursor-pointer"
+                >
                   Авторизация
-                </Link>
+                </button>
+
                 <Link to="/Registration" onClick={closeMenu} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md text-lg font-medium transition-colors w-full text-center">
                   Регистрация
                 </Link>
               </div>
 
-              {/* Кнопка переключения темы в мобильном меню */}
               <div className="pt-4">
                 <button
                   onClick={() => {
