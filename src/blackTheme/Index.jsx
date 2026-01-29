@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export default function Index({ theme }) {
   const backgroundImage = theme === "dark" ? IndexBg : IndexBgLight;
 
-  // Эффект для обработки якорных ссылок при загрузке страницы
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
@@ -92,8 +91,8 @@ export default function Index({ theme }) {
                   </div>
                 </div>
                 <div className="flex flex-row-reverse pt-10 lg:pr-29">
-                  <Link to="/Registration" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors drop-shadow-lg backdrop-blur-sm">
-                    Регистрация
+                  <Link to="/Account" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors drop-shadow-lg backdrop-blur-sm">
+                    Войти
                   </Link>
                 </div>
               </div>
@@ -102,7 +101,6 @@ export default function Index({ theme }) {
         </div>
       </div>
 
-      {/* Футер с id="contacts" для якорной ссылки */}
       <footer id="contacts" className={`${theme === "dark" ? "bg-black text-white" : "bg-gray-100 text-gray-800"} flex flex-col gap-3 items-center pt-4 pb-4`}>
         <Link to="/Error">Телефон "+7 (4842) 23-45-67"</Link>
         <Link to="/Error">e-mail: family@cosmos.ru</Link>
